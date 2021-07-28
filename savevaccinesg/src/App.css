@@ -5,8 +5,6 @@
      overflow-x: hidden;
  }
 
-
-
 /* LOGIN REGISTER */
 .logReg-main{
   background-image: url(./images/LoginRegisterLogo.jpg);
@@ -26,6 +24,33 @@
   margin-right: 10%;
 }
 
+/* DASHBOARD */
+.dashboard-body{
+  background-color: #f0f4f6;
+  height: 100vh;
+}
+
+/* LOST PAGE */
+.lost-body{
+  background-image: url(./images/blurred.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.lost-message{
+  padding-top: 20%;
+  padding-bottom: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* NAVBAR */
+.navbar-links{
+  font-size:1.5em;
+}
 /* FOOTER */
  .container-fluid {
     padding-top: 100px;
