@@ -10,7 +10,7 @@ export default function MainNavbar() {
     return (
         <div className="navbar-main">
           
-        <CDBSidebar textColor="#ffffff" backgroundColor="#338989">
+        <CDBSidebar textColor="#ffffff" backgroundColor="#7cbbb6">
           <CDBSidebarHeader>
             <img src={mainlogo} width="100%" margin="auto"></img>
           </CDBSidebarHeader>

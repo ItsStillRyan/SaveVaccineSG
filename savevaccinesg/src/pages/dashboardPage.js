@@ -66,10 +66,10 @@ export default function Dashboard() {
                                                     <Card.Body>
 
                                                         <div>
-                                                            <Button className="dashboard-buttons"> Request Doses </Button>
+                                                            <Button className="dashboard-buttons" variant="outline-secondary"> Request Doses </Button>
                                                         </div>
                                                         <div>
-                                                            <Button className="dashboard-buttons"> Submit Doses </Button>
+                                                            <Button className="dashboard-buttons" variant="outline-secondary"> Submit Doses </Button>
                                                         </div>
                                                     </Card.Body>
                                                 </Card>

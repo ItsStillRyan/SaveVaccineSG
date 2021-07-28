@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button, Col, Row, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
@@ -28,6 +29,14 @@ export default function LoginPage() {
                                         Submit
                                     </Button>
                                 </Form>
+
+                                <div className="login-register-cluster">
+                                    <p>Want to be part of the SaveVaccine Force?</p>
+                                    <Link to="/register">
+                                        <p>Register your Clinic here!</p>
+                                    </Link>
+
+                                </div>
                             </div>
                         </div>
                     </Col>
