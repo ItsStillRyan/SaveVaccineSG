@@ -16,7 +16,7 @@ export default function Dashboard() {
             <MainNavbar />
             <div className="dashboard-mainface">
                 <Row>
-                    <Col xs={2} ></Col>
+                    <Col xs={1} ></Col>
                     <Col>
                         <div className="dashboard-body">
                             <div className="dashboard-map">
