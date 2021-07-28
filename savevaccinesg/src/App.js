@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-do
 //IMPORT PAGES
 import LoginPage from './pages/loginPage'
 import RegisterPage from './pages/registerPage'
+import ProfilePage from './pages/profilePage';
 import Dashboard from './pages/dashboardPage'
 import RequestPage from './pages/requestPage'
 import SubmitPage from './pages/submitPage'
 import LostPage from './pages/lostPage';
-
 
 
 
@@ -18,7 +18,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={LoginPage}/>
-            
+            <Route exact path="/profile" component={ProfilePage}/>
             <Route exact path="/register" component={RegisterPage}/>
             <Route exact path="/dashboard" component={Dashboard}/>
             <Route exact path="/request" component={RequestPage}/>

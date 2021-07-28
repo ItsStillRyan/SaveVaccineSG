@@ -8,12 +8,11 @@ import mainlogo from '../images/SVlogo.png'
 
 export default function MainNavbar() {
     return (
-        <div
-        style={{ display: 'flex', height: '100vh', overflow: 'scroll initial', position:'absolute'}}
-      >
-        <CDBSidebar textColor="#ccf5df" backgroundColor="#292929">
-          <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-            <img src={mainlogo} width="150px"></img>
+        <div className="navbar-main">
+          
+        <CDBSidebar textColor="#ffffff" backgroundColor="#338989">
+          <CDBSidebarHeader>
+            <img src={mainlogo} width="100%" margin="auto"></img>
           </CDBSidebarHeader>
   
           <CDBSidebarContent className="sidebar-content">
@@ -27,7 +26,7 @@ export default function MainNavbar() {
               <NavLink exact to="/submit" activeClassName="activeClicked">
                 <CDBSidebarMenuItem icon="dolly">Send Doses</CDBSidebarMenuItem>
               </NavLink>
-              <NavLink exact to="/settings" activeClassName="activeClicked">
+              <NavLink exact to="/profile" activeClassName="activeClicked">
                 <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
               </NavLink>
               <NavLink exact to="/" activeClassName="activeClicked">
