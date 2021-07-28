@@ -25,10 +25,24 @@
 }
 
 /* DASHBOARD */
-.dashboard-body{
-  background-color: #f0f4f6;
+.dashboard-mainface{
   height: 100vh;
 }
+.dashboard-body{
+  border: 2px solid black;
+}
+.dashboard-map{
+  border: 2px soid black;
+  width: 55%;
+  height: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+.dashboard-map img{
+  height: 800px;
+}
+
 
 /* LOST PAGE */
 .lost-body{
@@ -49,7 +63,7 @@
 
 /* NAVBAR */
 .navbar-links{
-  font-size:1.5em;
+  font-size:1.4em;
 }
 /* FOOTER */
  .container-fluid {
