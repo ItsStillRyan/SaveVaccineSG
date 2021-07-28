@@ -3,7 +3,6 @@
  body {
      font-family: 'Rubik', sans-serif;
      overflow-x: hidden;
-     height: 100vh;
  }
 
 
@@ -12,10 +11,20 @@
 .logReg-main{
   background-image: url(./images/LoginRegisterLogo.jpg);
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
+}
+.login-cluster{
+  padding-top: 40%;
+  padding-bottom: 40%;
   
 }
-
+.login-cluster-inner{
+  border:3px solid #97d3d3;
+  border-radius: 3%;
+  padding: 60px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
 /* FOOTER */
  .container-fluid {
@@ -23,7 +32,6 @@
     padding-bottom: 100px;
     background: #292929;
     color: #627482 !important;
-    position:absolute;
     bottom:0;
     width:100%;
     
@@ -33,7 +41,6 @@
 }
 .bold-text {
   color: #989c9e !important;
-
 }
 .footer-namelist{
   list-style-type: none;

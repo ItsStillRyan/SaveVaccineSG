@@ -25,9 +25,7 @@ function App() {
             <Route exact path="/submit" component={SubmitPage}/>
             <Route path="/404" component={LostPage}/>
             <Redirect to="/404"/>
-            
           </Switch>
-          
         </Router>
     </div>
   );
