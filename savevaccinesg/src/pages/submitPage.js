@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Container, Form, Button } from 'react-bootstrap'
+import { Row, Col, Container, Form, Button, Card } from 'react-bootstrap'
 
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
@@ -19,68 +19,81 @@ export default function SubmitPage() {
                                 <div className="request-title">
                                     <p>Submit Doses</p>
                                 </div>
-                                {/* CLINIC DETAILS */}
-                                <Container>
-                                    <div className="submit-body">
-                                        <div className="submit-body-confirm-title">
-                                            <p>Confirm Details</p>
-                                        </div>
-                                        <Form>
-                                            <Form.Group as={Row} className="mb-5">
-                                                <Form.Label column sm={2}>Clinic Name: </Form.Label>
-                                                <Col>
-                                                    <Form.Control type="text" disabled />
-                                                </Col>
-                                            </Form.Group>
-
-                                            <Form.Group as={Row} className="mb-5">
-                                                <Form.Label column sm={2}>Clinic Address: </Form.Label>
-                                                <Col>
-                                                    <Form.Control type="text" disabled />
-                                                </Col>
-                                            </Form.Group>
-                                            <Row>
-                                                <Col>
-                                                    <Form.Group as={Row} className="mb-5">
-                                                        <Form.Label column sm={2}>Clinic ID: </Form.Label>
-                                                        <Col>
-                                                            <Form.Control type="text" disabled />
-                                                        </Col>
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col>
-                                                    <Form.Group as={Row} className="mb-5">
-                                                        <Form.Label column sm={2}>Contact: </Form.Label>
-                                                        <Col>
-                                                            <Form.Control type="text" disabled />
-                                                        </Col>
-                                                    </Form.Group>
-                                                </Col>
-                                            </Row>
-                                        </Form>
-                                    </div>
-                                    <div className="submit-submit">
-                                        <div>
-                                            <p>Amount to Submit</p>
-                                        </div>
-                                        <div>
-                                            <Row>
-                                                <Col></Col>
-                                                <Col xs={2}>
+                                <div className="submit-body">
+                                    {/* CLINIC DETAILS */}
+                                    <Row>
+                                        <Col md={9}>
+                                            <Card className="CardShadow submit-card">
+                                                <div className="submit-body-confirm-title">
+                                                    <p>Confirm Details</p>
+                                                </div>
+                                                <div className="submit-form">
                                                     <Form>
-                                                        <Form.Group className="mb-3">
-                                                            <Form.Control type="text" placeholder="Enter Amount" size="lg" />
+                                                        <Form.Group as={Row} className="mb-5">
+                                                            <Form.Label column sm={2}>Clinic Name: </Form.Label>
+                                                            <Col>
+                                                                <Form.Control type="text" disabled />
+                                                            </Col>
                                                         </Form.Group>
+
+                                                        <Form.Group as={Row} className="mb-5">
+                                                            <Form.Label column sm={2}>Clinic Address: </Form.Label>
+                                                            <Col>
+                                                                <Form.Control type="text" disabled />
+                                                            </Col>
+                                                        </Form.Group>
+                                                        <Row>
+                                                            <Col>
+                                                                <Form.Group as={Row} className="mb-5">
+                                                                    <Form.Label column sm={2}>Clinic ID: </Form.Label>
+                                                                    <Col>
+                                                                        <Form.Control type="text" disabled />
+                                                                    </Col>
+                                                                </Form.Group>
+                                                            </Col>
+                                                            <Col>
+                                                                <Form.Group as={Row} className="mb-5">
+                                                                    <Form.Label column sm={2}>Contact: </Form.Label>
+                                                                    <Col>
+                                                                        <Form.Control type="text" disabled />
+                                                                    </Col>
+                                                                </Form.Group>
+                                                            </Col>
+                                                        </Row>
                                                     </Form>
-                                                </Col>
-                                                <Col></Col>
-                                            </Row>
-                                        </div>
-                                        <div>
-                                            <Button>Submit</Button>
-                                        </div>
-                                    </div>
-                                </Container>
+                                                </div>
+                                            </Card>
+                                        </Col>
+
+                                        <Col>
+                                            <Card className="submit-submit-card CardShadow">
+                                                <div className="submit-submit">
+                                                    <div className="submit-body-confirm-title">
+                                                        <p>Amount to Submit</p>
+                                                    </div>
+                                                    <div className="submit-submit-form">
+                                                        <Row>
+                                                            <Col></Col>
+                                                            <Col xs={6}>
+                                                                <div>
+                                                                    <Form>
+                                                                        <Form.Group className="mb-3">
+                                                                            <Form.Control type="number" placeholder="Enter Amount" size="lg" />
+                                                                        </Form.Group>
+                                                                    </Form>
+                                                                </div>
+                                                                <div>
+                                                                    <Button className="submit-submit-button">Submit</Button>
+                                                                </div>
+                                                            </Col>
+                                                            <Col></Col>
+                                                        </Row>
+                                                    </div>
+                                                </div>
+                                            </Card>
+                                        </Col>
+                                    </Row>
+                                </div>
                             </Col>
                         </Row>
                     </div>
