@@ -10,8 +10,6 @@ import MapImage from '../images/map.jpg'
 
 export default function Dashboard() {
     return (
-
-
         <div>
             <MainNavbar />
             <div className="dashboard-mainface">

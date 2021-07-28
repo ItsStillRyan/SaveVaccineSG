@@ -14,7 +14,7 @@ export default function RequestPage() {
             <MainNavbar />
             <div className="request-mainface">
                 <Row>
-                    <Col xs={1}></Col>
+                    <Col xs={2}></Col>
                     <Col>
                         {/* TITLE */}
                         <div className="request-title">
