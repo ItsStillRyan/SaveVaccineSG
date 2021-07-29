@@ -10,16 +10,28 @@ const BASE_URL = config.BASE_URL
 
 export default function ProfilePage() {
 
-    const [profile, setProfile] = useState({})
+    const [name, setName] = useState()
+    const [address, setAddress] = useState()
+    const [area, setArea] = useState()
+    const [contact, setContact] = useState()
+    const [username, setUsername] = useState()
+
+    const un = localStorage.getItem("params")
 
     useEffect(() => {
-        const profileFetch = async () => {
-            const response = await axios.get(BASE_URL + "/clinics/search/findAllByName",
-                {
-
-                })
-            setProfile(response.data)
+        const fetchData1 = async () => {
+            const response = await axios.get(BASE_URL + "/userses/search/getUserByUsername", {
+                params: {
+                    username: un
+                }
+            })
+            setName(response.data.clinicname)
+            setAddress(response.data.address)
+            setContact(response.data.phoneno)
+            setArea(response.data.area)
+            setUsername(response.data.username)
         }
+        fetchData1()
     }, [])
 
 
@@ -52,32 +64,31 @@ export default function ProfilePage() {
                                                         <Form>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Clinic Name</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enter Clinic Name" />
+                                                                <Form.Control type="text" placeholder="Enter Clinic Name" value={name}/>
                                                             </Form.Group>
 
                                                             <Form.Group className="mb-2">
                                                                 <Form.Label>Address</Form.Label>
-                                                                <Form.Control type="textarea" placeholder="Enter Address" />
+                                                                <Form.Control type="textarea" placeholder="Enter Address" value={address}/>
                                                             </Form.Group>
 
-                                                            <Form.Select aria-label="Default select example">
-                                                                <option>- Select your Area -</option>
-                                                                <option value="1">North</option>
-                                                                <option value="2">East</option>
-                                                                <option value="3">Central</option>
-                                                                <option value="4">West</option>
+                                                            <Form.Select aria-label="Default select example" value={area}>
+                                                                <option value="North">North</option>
+                                                                <option value="East">East</option>
+                                                                <option value="Central">Central</option>
+                                                                <option value="West">West</option>
                                                             </Form.Select>
 
                                                             <Form.Group className="mt-3">
                                                                 <Form.Label>Contact</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enter Clinic Name" />
+                                                                <Form.Control type="text" placeholder="Enter Clinic Name" value={contact}/>
                                                             </Form.Group>
 
                                                             <hr class="solid" />
 
                                                             <Form.Group className="mt-3">
                                                                 <Form.Label>Username</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enter Username" />
+                                                                <Form.Control type="text" placeholder="Enter Username" value={username}/>
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Password</Form.Label>
