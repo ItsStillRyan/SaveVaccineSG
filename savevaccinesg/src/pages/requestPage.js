@@ -13,30 +13,42 @@ const BASE_URL = config.BASE_URL
 
 export default function RequestPage() {
 
-    const [data1, setdata1] = useState()
-    const [data, setData] = useState([])
+    const [posts, setPosts] = useState([])
+    // const [data, setData] = useState([])
     const [count, setCount] = useState(0)
     const [addremove, setAddRemove] = useState(true)
 
 
+    // useEffect(() => {
+    //     // async function fetchData() {
+    //     //     const response = await axios.get(BASE_URL + "/clinics")
+    //     //     setData(response.data._embedded.clinics)
+    //     // }fetchData()
+
+    //     const fetchData = async () => {
+    //         const response = await await axios.get(BASE_URL + "/clinics")
+    //         setData(response.data._embedded.clinics)
+    //     }
+    //     fetchData()
+    // }, [])
+
+
+    // function addonClick(addcount){
+    //     setCount(count + addcount)
+
+    // }
+    
     useEffect(() => {
-        // async function fetchData() {
-        //     const response = await axios.get(BASE_URL + "/clinics")
-        //     setData(response.data._embedded.clinics)
-        // }fetchData()
-
-        const fetchData = async () => {
-            const response = await await axios.get(BASE_URL + "/clinics")
-            setData(response.data._embedded.clinics)
-        }
-        fetchData()
+        axios.get('http://178.128.120.182:8080/clinics')
+            .then(res => {
+                //console.log(res.data._embedded)
+                //console.log(res.data)
+                setPosts(res.data._embedded.clinics)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
-
-
-    function addonClick(addcount){
-        setCount(count + addcount)
-        
-    }
 
     return (
         <div>
@@ -84,7 +96,18 @@ export default function RequestPage() {
                                                                     </Row>
                                                                 </td>
                                                             </tr>
-                                                        ))} */}
+                                                        ))}  */}
+                                                        
+                                                            {posts.map(post => (
+                                                                <tr key={post.id}>
+                                                                    <td>{post.name}</td>
+                                                                    <td>{post.address}</td>
+                                                                    <td>{post.type}</td>
+                                                                    <td>{post.region}</td>
+                                                                    <td>{post.dosecount}</td>
+
+                                                                </tr>
+                                                            ))}
                                                     </tbody>
                                                 </Table>
                                             </div>
@@ -94,32 +117,32 @@ export default function RequestPage() {
 
 
 
-                                {/* TOTAL FINAL */}
-                                <div className="request-submit">
-                                    <Container>
-                                        <Row>
-                                            {/* EMPTY COL */}
-                                            <Col></Col>
-                                            {/* TOTAL SELECTED COL */}
-                                            <Col md={3}>
-                                                <div>
-                                                    <Form>
-                                                        <Form.Group >
-                                                            <Form.Label>Total Dose Selected</Form.Label>
-                                                            <Form.Control disabled size="lg" value={count}/>
-                                                        </Form.Group>
-                                                    </Form>
-                                                </div>
-                                                <div className="request-submit-button">
-                                                    <Button>Submit Request</Button>
-                                                </div>
+                                    {/* TOTAL FINAL */}
+                                    <div className="request-submit">
+                                        <Container>
+                                            <Row>
+                                                {/* EMPTY COL */}
+                                                <Col></Col>
+                                                {/* TOTAL SELECTED COL */}
+                                                <Col md={3}>
+                                                    <div>
+                                                        <Form>
+                                                            <Form.Group >
+                                                                <Form.Label>Total Dose Selected</Form.Label>
+                                                                <Form.Control disabled size="lg" value={count} />
+                                                            </Form.Group>
+                                                        </Form>
+                                                    </div>
+                                                    <div className="request-submit-button">
+                                                        <Button>Submit Request</Button>
+                                                    </div>
 
-                                            </Col>
-                                            <Col>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                                </div>
+                                                </Col>
+                                                <Col>
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </div>
                             </Col>
                         </Row>
                     </div>
@@ -127,7 +150,7 @@ export default function RequestPage() {
             </Row>
 
 
-            <MainFooter />
-        </div >
-    )
+                <MainFooter />
+        </div>
+            )
 }
