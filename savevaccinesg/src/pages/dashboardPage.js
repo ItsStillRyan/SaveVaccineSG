@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
@@ -68,10 +69,16 @@ export default function Dashboard() {
                                                     <Card.Title>Submit/Request Doses</Card.Title>
                                                         <hr class="solid"></hr>
                                                         <div>
-                                                            <Button className="dashboard-buttons" variant="outline-secondary"> Request Doses </Button>
+                                                            <Link to="/request/:username">
+                                                                <Button className="dashboard-buttons" variant="outline-secondary"> Request Doses </Button>
+                                                            </Link>
+                                                            
                                                         </div>
                                                         <div>
-                                                            <Button className="dashboard-buttons" variant="outline-secondary"> Submit Doses </Button>
+                                                            <Link to="/submit/:username"> 
+                                                                <Button className="dashboard-buttons" variant="outline-secondary"> Submit Doses </Button>
+                                                            </Link>
+
                                                         </div>
                                                     </Card.Body>
                                                 </Card>
