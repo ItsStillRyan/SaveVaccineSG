@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Row, Col, Card, Button, Form } from 'react-bootstrap';
-
+import axios from 'axios';
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
 import MainNavbar from '../commons/navbar'
+//CONFIG
+import config from "../config";
+const BASE_URL = config.BASE_URL
 
 export default function ProfilePage() {
+
+    const [profile, setProfile] = useState({})
+
+    useEffect(() => {
+        const profileFetch = async () => {
+            const response = await axios.get(BASE_URL + "/clinics/search/findAllByName",
+                {
+
+                })
+            setProfile(response.data)
+        }
+    }, [])
+
+
+
     return (
         <div>
             <Row>

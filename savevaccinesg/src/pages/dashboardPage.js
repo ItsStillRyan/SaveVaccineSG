@@ -1,12 +1,11 @@
 import React from 'react'
-import { Row, Col, Container, Button, Card } from 'react-bootstrap';
+import { Row, Col, Button, Card } from 'react-bootstrap';
 
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
 import MainNavbar from '../commons/navbar'
 
 //IMPORT IMAGES
-import MapImage from '../images/map.jpg'
 import FakeChart from '../images/fakeChart.jpg'
 
 export default function Dashboard() {

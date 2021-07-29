@@ -3,7 +3,6 @@ import { Col, Row, Container} from 'react-bootstrap'
 
 //IMPORT IMAGES
 import logo from '../images/SVlogo.png'
-import gitLogo from '../images/gitLogo.png'
 
 export default function MainFooter() {
     return (

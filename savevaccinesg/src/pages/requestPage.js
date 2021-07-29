@@ -1,64 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col, Accordion, Container, Table, Button, Form, Card } from 'react-bootstrap';
-import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from "cdbreact";
+import axios from "axios";
 
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
 import MainNavbar from '../commons/navbar'
 
+//CONFIG
+import config from "../config";
+const BASE_URL = config.BASE_URL
+
+
 export default function RequestPage() {
 
-    function testClickEvent(param) {
-        alert("Row Click Event");
-    }
+    const [data1, setdata1] = useState()
+    const [data, setData] = useState([])
+    const [count, setCount] = useState(0)
+    const [addremove, setAddRemove] = useState(true)
 
-    const data = () => {
-        return ({
-            columns: [
-                {
-                    label: "Name",
-                    field: "name",
-                    width: 150,
-                    attributes: {
-                        "aria-controls": "DataTable",
-                        "aria-label": "Name",
-                    },
-                },
-                {
-                    label: "Address",
-                    field: "address",
-                    width: 300,
-                },
-                {
-                    label: "Vaccine Type",
-                    field: "vaccineType",
-                    width: 50,
-                },
-                {
-                    label: "Doses Available",
-                    field: "doses",
-                    sort: "asc",
-                    width: 20,
-                },
-                {
-                    label: "Area",
-                    field: "area",
-                    sort: "asc",
-                    width: 30,
-                }
-            ],
-            rows: [
-                {
-                    name: "this family clinic",
-                    address: "this place at this place street 51 singapore 123456",
-                    vaccineType: "Modena",
-                    doses: "61",
-                    area: "North",
-                    clickEvent: () => testClickEvent(1)
-                }
-            ],
-        });
-    };
+
+    useEffect(() => {
+        // async function fetchData() {
+        //     const response = await axios.get(BASE_URL + "/clinics")
+        //     setData(response.data._embedded.clinics)
+        // }fetchData()
+
+        const fetchData = async () => {
+            const response = await await axios.get(BASE_URL + "/clinics")
+            setData(response.data._embedded.clinics)
+        }
+        fetchData()
+    }, [])
+
+
+    function addonClick(addcount){
+        setCount(count + addcount)
+        
+    }
 
     return (
         <div>
@@ -77,20 +55,39 @@ export default function RequestPage() {
                                 <div className="request-body">
                                     <Card className="CardShadow request-list-Card">
                                         <Card.Body>
-                                            <CDBContainer>
-                                                <CDBCard>
-                                                    <CDBCardBody>
-                                                        <CDBDataTable
-                                                            striped
-                                                            bordered
-                                                            hover
-                                                            checkbox
-                                                            data={data()}
-                                                            materialSearch
-                                                        />
-                                                    </CDBCardBody>
-                                                </CDBCard>
-                                            </CDBContainer>
+                                            <div className="request-table">
+                                                <Table striped bordered hover size="sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Address</th>
+                                                            <th>Vaccine Type</th>
+                                                            <th>Area</th>
+                                                            <th>Doses Available</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {/* {data.map(p => (
+                                                            <tr>
+                                                                <td>{p.name}</td>
+                                                                <td>{p.address}</td>
+                                                                <td>{p.type}</td>
+                                                                <td>{p.region}</td>
+                                                                <td>{p.dosecount}</td>
+                                                                <td>
+                                                                    <Row>
+                                                                        <Col>
+                                                                            <Button onClick={addonClick(p.dosecount)}>Add</Button>
+                                                                            <Button >Remove</Button>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </td>
+                                                            </tr>
+                                                        ))} */}
+                                                    </tbody>
+                                                </Table>
+                                            </div>
                                         </Card.Body>
                                     </Card>
                                 </div>
@@ -109,7 +106,7 @@ export default function RequestPage() {
                                                     <Form>
                                                         <Form.Group >
                                                             <Form.Label>Total Dose Selected</Form.Label>
-                                                            <Form.Control disabled size="lg" />
+                                                            <Form.Control disabled size="lg" value={count}/>
                                                         </Form.Group>
                                                     </Form>
                                                 </div>

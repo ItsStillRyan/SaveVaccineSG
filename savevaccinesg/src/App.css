@@ -15,6 +15,7 @@ body {
 .logReg-title p{
   font-size: 3em;
   text-align: center;
+
 }
 .logReg-main{
   background-image: url(./images/LoginRegisterLogo.jpg);
@@ -185,8 +186,8 @@ body {
   width: 95%;
 }
 .request-list-Card{
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 .request-submit{
   margin-top: 5%;
@@ -195,6 +196,13 @@ body {
 }
 .request-submit-button{
   margin-top: 10%;
+}
+.request-table{
+  overflow-y:scroll;
+  height:500px;
+  width: 100%;
+  text-align: center;
+
 }
 /* LOST PAGE */
 .lost-body{
