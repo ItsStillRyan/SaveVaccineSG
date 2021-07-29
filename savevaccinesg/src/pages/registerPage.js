@@ -12,8 +12,11 @@ export default function RegisterPage() {
                 <Row>
                     <Col className=""></Col>
                     <Col>
-                        <div className="login-cluster">
-                            <div className="login-cluster-inner">
+                        <div className="register-cluster">
+                            <div className="register-cluster-inner">
+                            <div className="logReg-title">
+                                        <p>Register</p>
+                                    </div>
                                 <Form>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Clinic Name</Form.Label>
