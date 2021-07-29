@@ -75,11 +75,16 @@ export default function SubmitPage() {
                                                         <Row>
                                                             <Col></Col>
                                                             <Col xs={6}>
-                                                                <div>
+                                                                <div className="submit-submit-form-amount">
                                                                     <Form>
                                                                         <Form.Group className="mb-3">
                                                                             <Form.Control type="number" placeholder="Enter Amount" size="lg" />
                                                                         </Form.Group>
+                                                                        <Form.Select>
+                                                                            <option>- Select Vaccine Type -</option>
+                                                                            <option value="1">Pfizer/Comirnaty</option>
+                                                                            <option value="2">Moderna</option>
+                                                                        </Form.Select>
                                                                     </Form>
                                                                 </div>
                                                                 <div>

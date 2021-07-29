@@ -28,6 +28,7 @@ export default function Dashboard() {
                                                 <Card className="dashboard-map-Card CardShadow">
                                                     <Card.Body>
                                                         <Card.Title>Surplus Vaccination Centers Map</Card.Title>
+                                                        <hr class="solid"></hr>
                                                         <div className="dashboard-map">
                                                             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1C74Fpkrw0fqFvQP5DhsDnUvcr7sm6uNI" width="100%" height="650px"></iframe>
                                                         </div>
@@ -38,6 +39,7 @@ export default function Dashboard() {
                                                 <Card className="dashboard-numbercluster-Card CardShadow">
                                                     <Card.Body>
                                                         <Card.Title>Dosage Count</Card.Title>
+                                                        <hr class="solid"></hr>
                                                         <p>North</p>
                                                         <div className="dashboard-numbercluster">
                                                             <h1>000</h1>
@@ -64,7 +66,8 @@ export default function Dashboard() {
                                             <Col xs={2}>
                                                 <Card className="CardShadow">
                                                     <Card.Body>
-
+                                                    <Card.Title>Submit/Request Doses</Card.Title>
+                                                        <hr class="solid"></hr>
                                                         <div>
                                                             <Button className="dashboard-buttons" variant="outline-secondary"> Request Doses </Button>
                                                         </div>
@@ -78,6 +81,7 @@ export default function Dashboard() {
                                                 <Card className="CardShadow">
                                                     <Card.Body>
                                                         <Card.Title>Covid Cases Chart for 06 days</Card.Title>
+                                                        <hr class="solid"></hr>
                                                         <img src={FakeChart} className="dashboard-fakeChart" />
                                                     </Card.Body>
                                                 </Card>
@@ -85,74 +89,36 @@ export default function Dashboard() {
                                             <Col>
                                                 <Card className="CardShadow">
                                                     <Card.Body>
+                                                        <Card.Title>Covid News for Today</Card.Title>
+                                                        <hr class="solid"></hr>
+                                                        <div>
+                                                            <p><b>Mandatory COVID-19 tests for all students, staff at Punggol Primary School after cases detected</b></p>
+                                                            <p>an hour ago</p>
+                                                        </div>
+                                                        <hr class="solid"></hr>
+                                                        <div>
+                                                            <p><b>130 new locally transmitted COVID-19 cases in Singapore; 5 new clusters</b></p>
+                                                            <p>8 hours ago</p>
+                                                        </div>
+                                                        <hr class="solid"></hr>
+                                                        <div>
+                                                            <p><b>Hospital beds could fill up in a week if a COVID-19 cluster grows 'uncontrollably': Ong Ye Kung</b></p>
+                                                            <p>15 hours ago</p>
+                                                        </div>
+
 
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
                                         </Row>
                                     </div>
-
-
-                                    {/* <div className="dashboard-map text-center">
-                                <img src={MapImage} />
-                            </div>
-                            <div>
-                                <Container>
-                                    <Row>
-                                        <Col>
-                                            <div className="dashboard-numbercluster">
-                                                <p>000</p>
-                                            </div>
-                                        </Col>
-                                        <Col>
-                                            <div className="dashboard-numbercluster">
-                                                <p>000</p>
-                                            </div>
-                                        </Col>
-                                        <Col>
-                                            <div className="dashboard-numbercluster">
-                                                <p>000</p>
-                                            </div>
-                                        </Col>
-                                        <Col>
-                                            <div className="dashboard-numbercluster">
-                                                <p>000</p>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </div>
-                            <div className="dashboard-buttonCluster">
-                                <Row>
-                                    <Col className="text-center">
-                                        <Button className="dashboard-button">
-                                            <p>Submit Doses</p>
-                                        </Button>
-                                    </Col>
-                                    <Col className="text-center">
-                                        <Button className="dashboard-button">
-                                            <p>Request Doses</p>
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </div> */}
                                 </div>
                             </Col>
                         </Row>
                     </div>
-
                 </Col>
-
             </Row>
             <MainFooter />
-
-
-
-
         </div >
-
     )
 }
-{/* <div className="dashboard-map">
-                                <img src={MapImage}/>
-                            </div> */}
