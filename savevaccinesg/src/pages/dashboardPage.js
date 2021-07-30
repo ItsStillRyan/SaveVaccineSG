@@ -108,7 +108,7 @@ export default function Dashboard() {
             name: '29 July', Cases: 2006, pv: 100, amt: 100
         },
         {
-            name: '30 July', Cases: 2006, pv: 100, amt: 100
+            name: '30 July', Cases: 2050, pv: 100, amt: 100
         },
     ];
 
