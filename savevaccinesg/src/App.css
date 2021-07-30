@@ -102,6 +102,11 @@ body {
   width: 100%;
   height: 410px;
 }
+.dashboard-newsCard{
+  overflow-y:scroll;
+  height:500px;
+  width: 100%;
+}
 /* PROFILE PAGE */
 .profile-mainface{
   width: 95%;
