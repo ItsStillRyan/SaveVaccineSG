@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col, Accordion, Container, Table, Button, Form, Card } from 'react-bootstrap';
+import { Row, Col, Container, Table, Button, Form, Card, ToastContainer, Toast } from 'react-bootstrap';
 import axios from "axios";
 
 //IMPORT NAVBAR AND FOOTER
@@ -15,6 +15,10 @@ export default function RequestPage() {
 
     const [posts, setPosts] = useState([])
     const [count, setCount] = useState(0)
+
+    const [showA, setShowA] = useState(false);
+    const toggleShowA = () => setShowA(!showA);
+
 
     function addonClick(addcount) {
         setCount(count + addcount)
@@ -34,6 +38,15 @@ export default function RequestPage() {
             })
     }, [])
 
+
+    function submitHandle(e) {
+        e.preventDefault();
+        setShowA(true)
+        setTimeout(function () {
+            setShowA(false)
+        }, 3000)
+    }
+
     return (
         <div>
             <Row>
@@ -49,6 +62,16 @@ export default function RequestPage() {
                                 </div>
                                 {/* CLINIC LIST */}
                                 <div className="request-body">
+
+                                    <ToastContainer position="top-center" className="p-4">
+                                        <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
+                                            <Toast.Header>
+                                                <strong className="me-auto">Successfully Requested!</strong>
+                                            </Toast.Header>
+                                            <Toast.Body>Your request will be handled shortly!</Toast.Body>
+                                        </Toast>
+                                    </ToastContainer>
+
                                     <Card className="CardShadow request-list-Card">
                                         <Card.Body>
                                             <div className="request-table">
@@ -100,16 +123,17 @@ export default function RequestPage() {
                                             {/* TOTAL SELECTED COL */}
                                             <Col md={3}>
                                                 <div>
-                                                    <Form>
+                                                    <Form onSubmit={submitHandle}>
                                                         <Form.Group >
                                                             <Form.Label>Total Dose Selected</Form.Label>
                                                             <Form.Control disabled size="lg" value={count} />
                                                         </Form.Group>
+                                                        <div className="request-submit-button">
+                                                            <Button type="submit">Submit Request</Button>
+                                                        </div>
                                                     </Form>
                                                 </div>
-                                                <div className="request-submit-button">
-                                                    <Button>Submit Request</Button>
-                                                </div>
+
 
                                             </Col>
                                             <Col>

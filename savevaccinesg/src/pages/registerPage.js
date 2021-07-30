@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { Form, Button, Col, Row, Container } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Form, Button, Col, Row, Toast, ToastContainer } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 //IMPORT NAVBAR AND FOOTER
@@ -19,50 +19,44 @@ export default function RegisterPage() {
     const [password, setPassword] = useState("");
     const [phoneno, setPhoneno] = useState("");
 
+    const [showA, setShowA] = useState(false);
+        const toggleShowA = () => setShowA(!showA);
+
     async function submitdata(event) {
         event.preventDefault();
-
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-
-            "clinicname": clinicname,
-            "address": address,
-            "phoneno": phoneno,
-            "area": area,
-            "username": username,
-            "password": password
-
-        });
-        // var requestOptions = {
-        //     method: 'POST',
-        //     redirect: 'follow',
-        //     headers: myHeaders,
-        //     body: raw,
-        //     mode: 'no-cors',
-        // };
-
-
-        // fetch(BASE_URL + "/userses", requestOptions)
-        //     .then(response => response.text())
-        //     .then(result => console.log(result))
-        //     .catch(error => console.log('error', error));
-
-        await axios.post(BASE_URL + "/userses", 
-        {
-            "clinicname": clinicname,
-            "address": address,
-            "phoneno": phoneno,
-            "area": area,
-            "username": username,
-            "password": password
-        } )
-
+        await axios.post(BASE_URL + "/userses",
+            {
+                "clinicname": clinicname,
+                "address": address,
+                "phoneno": phoneno,
+                "area": area,
+                "username": username,
+                "password": password
+            })
+        
+        setShowA(true)
+        setTimeout(function(){
+            setShowA(false)
+            window.location.assign("/")
+        },3000)
     }
+
+    
+
     return (
         <div>
+            <ToastContainer position="top-center" className="p-4">
+                <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
+                    <Toast.Header>
+                        <strong className="me-auto">Successfully Registered!</strong>
+                    </Toast.Header>
+                    <Toast.Body>You will be redirected to the login page in a bit!</Toast.Body>
+                </Toast>
+            </ToastContainer>
             <div className="logReg-main">
+
                 <Row>
                     <Col className=""></Col>
                     <Col>

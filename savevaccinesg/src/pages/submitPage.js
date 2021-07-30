@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Form, Button, Card } from 'react-bootstrap'
+import { Row, Col, Form, Button, Card, Toast, ToastContainer } from 'react-bootstrap'
 
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
@@ -20,6 +20,9 @@ export default function SubmitPage() {
     const [doseType, setdoseType] = useState("Pfizer")
     const [doseSubmit, setDoseSubmit] = useState(0)
     const [id, setId] = useState()
+
+    const [showA, setShowA] = useState(false);
+    const toggleShowA = () => setShowA(!showA);
 
     const username = localStorage.getItem("params")
 
@@ -59,10 +62,18 @@ export default function SubmitPage() {
                 "region": area
             })
         }
+        setShowA(true)
+        setTimeout(function(){
+            setShowA(false)
+        },3000)
     }
+
+
 
     return (
         <div>
+
+
             <Row>
                 <Col xs={1}><MainNavbar /></Col>
                 <Col>
@@ -76,6 +87,16 @@ export default function SubmitPage() {
                                     <p>Submit Doses</p>
                                 </div>
                                 <div className="submit-body">
+
+                                    <ToastContainer position="top-center" className="p-4">
+                                        <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
+                                            <Toast.Header>
+                                                <strong className="me-auto">Doses Submitted</strong>
+                                            </Toast.Header>
+                                            <Toast.Body>Thank you for submitting!</Toast.Body>
+                                        </Toast>
+                                    </ToastContainer>
+
                                     {/* CLINIC DETAILS */}
                                     <Row>
                                         <Col md={9}>

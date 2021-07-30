@@ -10,12 +10,14 @@ body {
  .CardShadow{
   box-shadow: 0 0 10px 0 rgba(150, 150, 150, 0.8);
 }
- 
+.global-toast{
+  position: absolute;
+}
+
 /* LOGIN REGISTER */
 .logReg-title p{
   font-size: 3em;
   text-align: center;
-
 }
 .logReg-main{
   background-image: url(./images/LoginRegisterLogo.jpg);
@@ -104,7 +106,7 @@ body {
 }
 .dashboard-newsCard{
   overflow-y:scroll;
-  height:500px;
+  height:530px;
   width: 100%;
 }
 /* PROFILE PAGE */

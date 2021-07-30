@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Form, Button, Col, Row, Container } from 'react-bootstrap'
+import { Form, Button, Col, Row, Container} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import axios from "axios";
 
 
 //IMPORT NAVBAR AND FOOTER
@@ -13,8 +12,11 @@ const BASE_URL = config.BASE_URL
 
 export default function LoginPage() {
 
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    
 
     async function submitdata(event) {
         const form = event.currentTarget
@@ -23,21 +25,9 @@ export default function LoginPage() {
             event.preventDefault();
         } else {
             event.preventDefault();
-
-            // const response = await axios.post(BASE_URL + "/login", 
-            // {
-            //     'username': username,
-            //     'password': password
-            // })
-            // if(response.ok){
-            //     window.location.assign("/dashboard/" + username)
-            // }else{
-            //     window.location.assign("/")
-            // }  
-            
             localStorage.setItem("params", username)
             window.location.assign("/dashboard/" + username)
-            
+
         }
     }
 
@@ -91,7 +81,9 @@ export default function LoginPage() {
                         </Col>
                     </Row>
                 </Container>
+
             </div>
+
             <MainFooter />
         </div>
     )

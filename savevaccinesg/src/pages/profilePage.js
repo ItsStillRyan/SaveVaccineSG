@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { Row, Col, Card, Button, Form, Toast, ToastContainer  } from 'react-bootstrap';
 import axios from 'axios';
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
@@ -15,6 +15,9 @@ export default function ProfilePage() {
     const [area, setArea] = useState()
     const [contact, setContact] = useState()
     const [username, setUsername] = useState()
+
+    const [showA, setShowA] = useState(true);
+    const toggleShowA = () => setShowA(!showA);
 
     const un = localStorage.getItem("params")
 
@@ -38,9 +41,18 @@ export default function ProfilePage() {
 
     return (
         <div>
+            <ToastContainer position="top-center" className="p-4">
+                <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
+                    <Toast.Header>
+                        <strong className="me-auto">Successfully Logged in!</strong>
+                    </Toast.Header>
+                    <Toast.Body>Welcome back, {name}</Toast.Body>
+                </Toast>
+            </ToastContainer>
             <Row>
                 <Col xs={1}><MainNavbar /></Col>
                 <Col>
+                
                     <div className="submit-mainface">
                         <Row>
                             <Col xs={2} ></Col>
@@ -64,12 +76,12 @@ export default function ProfilePage() {
                                                         <Form>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Clinic Name</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enter Clinic Name" value={name}/>
+                                                                <Form.Control type="text" placeholder="Enter Clinic Name" value={name} />
                                                             </Form.Group>
 
                                                             <Form.Group className="mb-2">
                                                                 <Form.Label>Address</Form.Label>
-                                                                <Form.Control type="textarea" placeholder="Enter Address" value={address}/>
+                                                                <Form.Control type="textarea" placeholder="Enter Address" value={address} />
                                                             </Form.Group>
 
                                                             <Form.Select aria-label="Default select example" value={area}>
@@ -81,14 +93,14 @@ export default function ProfilePage() {
 
                                                             <Form.Group className="mt-3">
                                                                 <Form.Label>Contact</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enter Clinic Name" value={contact}/>
+                                                                <Form.Control type="text" placeholder="Enter Clinic Name" value={contact} />
                                                             </Form.Group>
 
                                                             <hr class="solid" />
 
                                                             <Form.Group className="mt-3">
                                                                 <Form.Label>Username</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enter Username" value={username}/>
+                                                                <Form.Control type="text" placeholder="Enter Username" value={username} />
                                                             </Form.Group>
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Password</Form.Label>
