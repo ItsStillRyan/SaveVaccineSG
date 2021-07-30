@@ -34,6 +34,7 @@ export default function LoginPage() {
             // }else{
             //     window.location.assign("/")
             // }  
+            
             localStorage.setItem("params", username)
             window.location.assign("/dashboard/" + username)
             

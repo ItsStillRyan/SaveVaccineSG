@@ -28,7 +28,7 @@ export default function MainNavbar() {
               <NavLink exact to={"/submit/" + username} activeClassName="activeClicked">
                 <CDBSidebarMenuItem icon="dolly">Send Doses</CDBSidebarMenuItem>
               </NavLink>
-              <NavLink exact to="/profile/:name" activeClassName="activeClicked">
+              <NavLink exact to={"/profile/" + username}activeClassName="activeClicked">
                 <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
               </NavLink>
               <NavLink exact to="/" activeClassName="activeClicked">

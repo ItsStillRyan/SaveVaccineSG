@@ -21,12 +21,6 @@ export default function SubmitPage() {
     const [doseSubmit, setDoseSubmit] = useState(0)
     const [id, setId] = useState()
 
-    //Detour calls, from the Clinics database
-    const [clinicName, setClinicName] = useState()
-    const [clinicAddress, setClinicAddress] = useState()
-    const [clinicContact, setClinicContact] = useState()
-    const [clinicArea, setClinicArea] = useState("North")
-
     const username = localStorage.getItem("params")
 
     useEffect(() => {
@@ -45,24 +39,6 @@ export default function SubmitPage() {
 
         const random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
         setId(random)
-
-        if (clinicArea === "North") {
-            setClinicName("Woodlands Community Center")
-            setClinicAddress("Woodlands")
-            setClinicContact(12345678)
-        } else if (clinicArea === "East") {
-            setClinicName("Tampines Community Center")
-            setClinicAddress("Tampines")
-            setClinicContact(12345678)
-        } else if (clinicArea === "Central") {
-            setClinicName("Orchard Community Center")
-            setClinicAddress("Orchard")
-            setClinicContact(12345678)
-        } else if (clinicArea === "West") {
-            setClinicName("Jurong Community Center")
-            setClinicAddress("Jurong")
-            setClinicContact(12345678)
-        }
     }, [])
 
 
@@ -74,28 +50,16 @@ export default function SubmitPage() {
             event.preventDefault()
 
             const e = new Date();
-            await axios.post(BASE_URL + "/requests", {
-                "sendername": name,
-                "senderaddress": address,
-                "senderphno": contact,
-                "receivername": clinicName,
-                "receiveraddress": clinicAddress,
-                "receiverphno": clinicContact,
+            await axios.post(BASE_URL + "/clinics", {
+                "name": name,
+                "address": address,
+                "phno": contact,
                 "dosecount": doseSubmit,
-                "requestdate": e.toISOString(),
                 "type": doseType,
                 "region": area
             })
         }
     }
-    const locationChange = (e) => {
-
-        setClinicArea(e.target.value)
-
-        
-    }
-
-
 
     return (
         <div>
@@ -196,14 +160,6 @@ export default function SubmitPage() {
                                                                             <option value="Pfizer">Pfizer/Comirnaty</option>
                                                                             <option value="Moderna">Moderna</option>
                                                                         </Form.Select>
-                                                                        <div className="submit-submit-area">
-                                                                            <Form.Select onChange={(e)=>locationChange(e)} value={clinicArea}>
-                                                                                <option value="North">North</option>
-                                                                                <option value="East">East</option>
-                                                                                <option value="Central">Central</option>
-                                                                                <option value="West">West</option>
-                                                                            </Form.Select>
-                                                                        </div>
                                                                         <div>
                                                                             <Button className="submit-submit-button" type="submit">Submit</Button>
                                                                         </div>
