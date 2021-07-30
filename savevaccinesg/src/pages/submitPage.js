@@ -65,6 +65,7 @@ export default function SubmitPage() {
         setShowA(true)
         setTimeout(function(){
             setShowA(false)
+            window.location.reload();
         },3000)
     }
 

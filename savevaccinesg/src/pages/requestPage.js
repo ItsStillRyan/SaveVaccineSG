@@ -44,6 +44,7 @@ export default function RequestPage() {
         setShowA(true)
         setTimeout(function () {
             setShowA(false)
+            window.location.reload();
         }, 3000)
     }
 
