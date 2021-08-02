@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Form, Button, Col, Row, Toast, ToastContainer } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -19,9 +19,11 @@ export default function RegisterPage() {
     const [password, setPassword] = useState("");
     const [phoneno, setPhoneno] = useState("");
 
+    //states for TOAST
     const [showA, setShowA] = useState(false);
-        const toggleShowA = () => setShowA(!showA);
+    const toggleShowA = () => setShowA(!showA);
 
+    // RESTFUL trigger + validation
     async function submitdata(event) {
         event.preventDefault();
         var myHeaders = new Headers();
@@ -35,18 +37,18 @@ export default function RegisterPage() {
                 "username": username,
                 "password": password
             })
-        
+
+        // TOAST timeout after 3 seconds
         setShowA(true)
-        setTimeout(function(){
+        setTimeout(function () {
             setShowA(false)
             window.location.assign("/")
-        },3000)
+        }, 3000)
     }
-
-    
 
     return (
         <div>
+            {/* START OF TOAST */}
             <ToastContainer position="top-center" className="p-4">
                 <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
                     <Toast.Header>
@@ -55,16 +57,21 @@ export default function RegisterPage() {
                     <Toast.Body>You will be redirected to the login page in a bit!</Toast.Body>
                 </Toast>
             </ToastContainer>
-            <div className="logReg-main">
 
+            <div className="logReg-main">
                 <Row>
+                    {/* Empty COL to split page in half */}
                     <Col className=""></Col>
+                    {/* Start of Register */}
                     <Col>
+                        {/* main container */}
                         <div className="register-cluster">
+                            {/* inner container */}
                             <div className="register-cluster-inner">
                                 <div className="logReg-title">
                                     <p>Register</p>
                                 </div>
+                                {/* START OF REGISTER FORM */}
                                 <Form onSubmit={submitdata}>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Clinic Name</Form.Label>
@@ -116,6 +123,7 @@ export default function RegisterPage() {
                                             onChange={(e) => setUsername(e.target.value)}
                                         />
                                     </Form.Group>
+
                                     <Form.Group className="mb-3">
                                         <Form.Label>Password</Form.Label>
                                         <Form.Control
@@ -131,19 +139,17 @@ export default function RegisterPage() {
                                         Submit
                                     </Button>
                                 </Form>
-
+                                {/* LOGIN REDIRECT NAV */}
                                 <div className="login-register-cluster">
                                     <p>Already have an Account?</p>
                                     <Link to="/">
                                         <p>Log in here!</p>
                                     </Link>
-
                                 </div>
                             </div>
                         </div>
                     </Col>
                 </Row>
-
             </div>
             <MainFooter />
         </div>

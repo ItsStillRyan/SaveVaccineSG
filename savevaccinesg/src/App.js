@@ -10,19 +10,19 @@ import RequestPage from './pages/requestPage'
 import SubmitPage from './pages/submitPage'
 import LostPage from './pages/lostPage';
 
-
-
-function App() {
+export default function App() {
   return (
     <div className="App">
         <Router>
           <Switch>
+            {/* MAIN REDIRECTS */}
             <Route exact path="/" component={LoginPage}/>
             <Route exact path="/profile/:username" component={ProfilePage}/>
             <Route exact path="/register" component={RegisterPage}/>
             <Route exact path="/dashboard/:username" component={Dashboard}/>
             <Route exact path="/request/:username" component={RequestPage}/>
             <Route exact path="/submit/:username" component={SubmitPage}/>
+            {/* WRONG PAGE 404 */}
             <Route path="/404" component={LostPage}/>
             <Redirect to="/404"/>
           </Switch>
@@ -30,5 +30,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

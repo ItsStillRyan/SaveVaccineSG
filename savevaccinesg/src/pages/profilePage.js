@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Card, Button, Form, Toast, ToastContainer  } from 'react-bootstrap';
+import { Row, Col, Card, Button, Form, Toast, ToastContainer } from 'react-bootstrap';
 import axios from 'axios';
+
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
 import MainNavbar from '../commons/navbar'
+
 //CONFIG
 import config from "../config";
 const BASE_URL = config.BASE_URL
@@ -16,9 +18,11 @@ export default function ProfilePage() {
     const [contact, setContact] = useState()
     const [username, setUsername] = useState()
 
+    //states for TOAST
     const [showA, setShowA] = useState(true);
     const toggleShowA = () => setShowA(!showA);
 
+    //using this to pull data via RESTFUL
     const un = localStorage.getItem("params")
 
     useEffect(() => {
@@ -37,10 +41,9 @@ export default function ProfilePage() {
         fetchData1()
     }, [])
 
-
-
     return (
         <div>
+            {/* TOAST */}
             <ToastContainer position="top-center" className="p-4">
                 <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
                     <Toast.Header>
@@ -49,18 +52,23 @@ export default function ProfilePage() {
                     <Toast.Body>Welcome back, {name}</Toast.Body>
                 </Toast>
             </ToastContainer>
+
             <Row>
+                {/* EMPTY COL TO CENTER PAGE */}
                 <Col xs={1}><MainNavbar /></Col>
+                {/* START OF PROFILE BODY */}
                 <Col>
-                
                     <div className="submit-mainface">
                         <Row>
-                            <Col xs={2} ></Col>
+                            {/* EMPTY COL TO CENTER PAGE */}
+                            <Col xs={2}></Col>
+                            {/* START OF PROFILE BODY */}
                             <Col>
                                 <Card className="profile-mainface CardShadow">
                                     <div>
                                         <Card.Body>
                                             <Row>
+                                                {/* PROFILE PIC PLACEHOLDER */}
                                                 <Col md={4} className="text-center">
                                                     <div className="profile-pfImage">
                                                         <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" width="300px" />
@@ -71,6 +79,7 @@ export default function ProfilePage() {
                                                         </Form>
                                                     </div>
                                                 </Col>
+                                                {/* START OF DETAILS CLUSTER AS FORM */}
                                                 <Col>
                                                     <div className="profile-detailsCluster">
                                                         <Form>
@@ -95,13 +104,14 @@ export default function ProfilePage() {
                                                                 <Form.Label>Contact</Form.Label>
                                                                 <Form.Control type="text" placeholder="Enter Clinic Name" value={contact} />
                                                             </Form.Group>
-
+                                                            {/* DIVIDER */}
                                                             <hr class="solid" />
 
                                                             <Form.Group className="mt-3">
                                                                 <Form.Label>Username</Form.Label>
                                                                 <Form.Control type="text" placeholder="Enter Username" value={username} />
                                                             </Form.Group>
+
                                                             <Form.Group className="mb-3">
                                                                 <Form.Label>Password</Form.Label>
                                                                 <Form.Control type="password" placeholder="Password" />
@@ -110,7 +120,9 @@ export default function ProfilePage() {
                                                     </div>
                                                 </Col>
                                             </Row>
+                                            {/* DIVIDER */}
                                             <hr class="solid" />
+                                            {/* START OF MACRO BUTTON CLUSTER PLACEHOLDER */}
                                             <div className="profile-buttonCluster">
                                                 <Row>
                                                     <div>
@@ -153,8 +165,6 @@ export default function ProfilePage() {
                     </div>
                 </Col>
             </Row>
-
-
             <MainFooter />
         </div >
     )

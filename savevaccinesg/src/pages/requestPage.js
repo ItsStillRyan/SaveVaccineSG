@@ -6,28 +6,16 @@ import axios from "axios";
 import MainFooter from '../commons/footer'
 import MainNavbar from '../commons/navbar'
 
-//CONFIG
-import config from "../config";
-const BASE_URL = config.BASE_URL
-
-
 export default function RequestPage() {
 
     const [posts, setPosts] = useState([])
     const [count, setCount] = useState(0)
 
+    //states for TOAST
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
 
-
-    function addonClick(addcount) {
-        setCount(count + addcount)
-    }
-    function removeonClick(removeCount) {
-        setCount(count - removeCount)
-    }
-
-
+    // KUMA's attempt at this
     useEffect(() => {
         axios.get('http://178.128.120.182:8080/clinics?page=0&size=300')
             .then(res => {
@@ -38,7 +26,15 @@ export default function RequestPage() {
             })
     }, [])
 
+    // COUNTER +/-
+    function addonClick(addcount) {
+        setCount(count + addcount)
+    }
+    function removeonClick(removeCount) {
+        setCount(count - removeCount)
+    }
 
+    // SUBMIT TRIGGER
     function submitHandle(e) {
         e.preventDefault();
         setShowA(true)
@@ -51,19 +47,22 @@ export default function RequestPage() {
     return (
         <div>
             <Row>
+                {/* EMPTY COL TO PUSH PAGE TO THE RIGHT */}
                 <Col xs={1}><MainNavbar /></Col>
+                {/* START OF MAIN REQUEST PAGE */}
                 <Col>
                     <div className="request-mainface">
                         <Row>
+                            {/* EMPTY COL TO CENTER PAGE */}
                             <Col xs={2}></Col>
                             <Col>
                                 {/* TITLE */}
                                 <div className="request-title">
                                     <p>Request Doses</p>
                                 </div>
-                                {/* CLINIC LIST */}
+                                {/* START OF REQUEST BODY */}
                                 <div className="request-body">
-
+                                    {/* TOAST */}
                                     <ToastContainer position="top-center" className="p-4">
                                         <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
                                             <Toast.Header>
@@ -72,7 +71,7 @@ export default function RequestPage() {
                                             <Toast.Body>Your request will be handled shortly!</Toast.Body>
                                         </Toast>
                                     </ToastContainer>
-
+                                    {/* MAIN TABLE LIST */}
                                     <Card className="CardShadow request-list-Card">
                                         <Card.Body>
                                             <div className="request-table">
@@ -88,9 +87,8 @@ export default function RequestPage() {
                                                             <th></th>
                                                         </tr>
                                                     </thead>
+                                                    {/* Display via .map iteration */}
                                                     <tbody>
-
-
                                                         {posts.map(post => (
                                                             <tr key={post.id}>
                                                                 <td>{post.name}</td>
@@ -113,15 +111,13 @@ export default function RequestPage() {
                                     </Card>
                                 </div>
 
-
-
-                                {/* TOTAL FINAL */}
+                                {/* SUBMIT CLUSTER */}
                                 <div className="request-submit">
                                     <Container>
                                         <Row>
-                                            {/* EMPTY COL */}
+                                            {/* EMPTY COL TO CENTER CLUSTER */}
                                             <Col></Col>
-                                            {/* TOTAL SELECTED COL */}
+                                            {/* CLUSTER COL */}
                                             <Col md={3}>
                                                 <div>
                                                     <Form onSubmit={submitHandle}>
@@ -134,11 +130,9 @@ export default function RequestPage() {
                                                         </div>
                                                     </Form>
                                                 </div>
-
-
                                             </Col>
-                                            <Col>
-                                            </Col>
+                                            {/* EMPTY COL TO CENTER CLUSTER */}
+                                            <Col></Col>
                                         </Row>
                                     </Container>
                                 </div>
@@ -147,8 +141,6 @@ export default function RequestPage() {
                     </div>
                 </Col>
             </Row>
-
-
             <MainFooter />
         </div>
     )

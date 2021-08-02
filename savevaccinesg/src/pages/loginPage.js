@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Form, Button, Col, Row, Container} from 'react-bootstrap'
+import { Form, Button, Col, Row, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-
-//IMPORT NAVBAR AND FOOTER
+//IMPORT NAVBAR
 import MainFooter from '../commons/footer'
 
 //CONFIG
@@ -11,13 +10,10 @@ import config from "../config";
 const BASE_URL = config.BASE_URL
 
 export default function LoginPage() {
-
-    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    
-
+    // RESTFUL trigger + validation
     async function submitdata(event) {
         const form = event.currentTarget
 
@@ -36,13 +32,18 @@ export default function LoginPage() {
             <div className="logReg-main">
                 <Container>
                     <Row>
+                        {/* Empty COL to split page in half */}
                         <Col className=""></Col>
+                        {/* Start of login page */}
                         <Col>
+                            {/* main container */}
                             <div className="login-cluster">
+                                {/* inner container container */}
                                 <div className="login-cluster-inner">
                                     <div className="logReg-title">
                                         <p>Login</p>
                                     </div>
+                                    {/* START OF FORM */}
                                     <div>
                                         <Form onSubmit={submitdata} validataed>
                                             <Form.Group className="mb-3">
@@ -70,6 +71,7 @@ export default function LoginPage() {
                                             </Button>
                                         </Form>
                                     </div>
+                                    {/* REGISTER REDIRECT NAV */}
                                     <div className="login-register-cluster">
                                         <p>Want to be part of the SaveVaccine Force?</p>
                                         <Link to="/register">
@@ -81,9 +83,7 @@ export default function LoginPage() {
                         </Col>
                     </Row>
                 </Container>
-
             </div>
-
             <MainFooter />
         </div>
     )

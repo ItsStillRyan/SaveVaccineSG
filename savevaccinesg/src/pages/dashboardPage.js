@@ -7,8 +7,9 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
 import MainFooter from '../commons/footer'
 import MainNavbar from '../commons/navbar'
 
-
-
+//CONFIG
+import config from "../config";
+const data = config.DATA
 
 export default function Dashboard() {
 
@@ -17,103 +18,11 @@ export default function Dashboard() {
     const [doses3, setDoses3] = useState()
     const [doses4, setDoses4] = useState()
 
+    //URL getter
     const UN = localStorage.getItem("params")
 
-    const data = [
-        {
-            name: '1 July', Cases: 319, pv: 100, amt: 100
-        },
-        {
-            name: '2 July', Cases: 313, pv: 100, amt: 100
-        },
-        {
-            name: '3 July', Cases: 305, pv: 100, amt: 100
-        },
-        {
-            name: '4 July', Cases: 295, pv: 100, amt: 100
-        },
-        {
-            name: '5 July', Cases: 295, pv: 100, amt: 100
-        },
-        {
-            name: '6 July', Cases: 291, pv: 100, amt: 100
-        },
-        {
-            name: '7 July', Cases: 275, pv: 100, amt: 100
-        },
-        {
-            name: '8 July', Cases: 269, pv: 100, amt: 100
-        },
-        {
-            name: '9 July', Cases: 268, pv: 100, amt: 100
-        },
-        {
-            name: '10 July', Cases: 251, pv: 100, amt: 100
-        },
-        {
-            name: '11 July', Cases: 242, pv: 100, amt: 100
-        },
-        {
-            name: '12 July', Cases: 250, pv: 100, amt: 100
-        },
-        {
-            name: '13 July', Cases: 255, pv: 100, amt: 100
-        },
-        {
-            name: '14 July', Cases: 301, pv: 100, amt: 100
-        },
-        {
-            name: '15 July', Cases: 335, pv: 100, amt: 100
-        },
-        {
-            name: '16 July', Cases: 379, pv: 100, amt: 100
-        },
-        {
-            name: '17 July', Cases: 433, pv: 100, amt: 100
-        },
-        {
-            name: '18 July', Cases: 511, pv: 100, amt: 100
-        },
-        {
-            name: '19 July', Cases: 683, pv: 100, amt: 100
-        },
-        {
-            name: '20 July', Cases: 861, pv: 100, amt: 100
-        },
-        {
-            name: '21 July', Cases: 1025, pv: 100, amt: 100
-        },
-        {
-            name: '22 July', Cases: 1179, pv: 100, amt: 100
-        },
-        {
-            name: '23 July', Cases: 1301, pv: 100, amt: 100
-        },
-        {
-            name: '24 July', Cases: 1422, pv: 100, amt: 100
-        },
-        {
-            name: '25 July', Cases: 1547, pv: 100, amt: 100
-        },
-        {
-            name: '26 July', Cases: 1672, pv: 100, amt: 100
-        },
-        {
-            name: '27 July', Cases: 1779, pv: 100, amt: 100
-        },
-        {
-            name: '28 July', Cases: 1889, pv: 100, amt: 100
-        },
-        {
-            name: '29 July', Cases: 2006, pv: 100, amt: 100
-        },
-        {
-            name: '30 July', Cases: 2050, pv: 100, amt: 100
-        },
-    ];
-
-
     useEffect(() => {
+        //random numbers gen for DOSAGE COUNT
         const random1 = Math.floor(Math.random() * (99 - 1 + 1)) + 1;
         const random2 = Math.floor(Math.random() * (99 - 1 + 1)) + 1;
         const random3 = Math.floor(Math.random() * (99 - 1 + 1)) + 1;
@@ -124,21 +33,22 @@ export default function Dashboard() {
         setDoses4(random4)
     }, [])
 
-
     return (
         <div>
             <Row className="dashboard-mainface">
-                <Col xs={1}>
-                    <MainNavbar />
-                </Col>
+                {/* EMPTY COL TO PUSH PAGE TO THE RIGHT */}
+                <Col xs={1}><MainNavbar /></Col>
+                {/* START OF MAIN PAGE DASHBOARD */}
                 <Col >
                     <div>
                         <Row>
                             <Col xs={2} ></Col>
                             <Col>
                                 <div className="dashboard-body">
+                                    {/* START OF ROW 1 */}
                                     <div className="dashboard-row1">
                                         <Row>
+                                            {/* MAP */}
                                             <Col xs={8}>
                                                 <Card className="dashboard-map-Card CardShadow">
                                                     <Card.Body>
@@ -150,6 +60,7 @@ export default function Dashboard() {
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
+                                            {/* DOSAGE COUNT */}
                                             <Col xs={4}>
                                                 <Card className="dashboard-numbercluster-Card CardShadow">
                                                     <Card.Body>
@@ -176,8 +87,10 @@ export default function Dashboard() {
                                             </Col>
                                         </Row>
                                     </div>
+                                    {/* START OF ROW 2 */}
                                     <div className="dashboard-row2">
                                         <Row>
+                                            {/* NAV BUTTONS */}
                                             <Col xs={2}>
                                                 <Card className="CardShadow">
                                                     <Card.Body>
@@ -198,6 +111,7 @@ export default function Dashboard() {
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
+                                            {/* GRAPH */}
                                             <Col xs={7}>
                                                 <Card className="CardShadow">
                                                     <Card.Body>
@@ -214,6 +128,7 @@ export default function Dashboard() {
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
+                                            {/* NEWS TABLET */}
                                             <Col>
                                                 <Card className="CardShadow dashboard-newsCard">
                                                     <Card.Body>
@@ -250,8 +165,6 @@ export default function Dashboard() {
                                                             <p><b>Thai streets empty as India traffic jams return, Apple data show</b></p>
                                                             <p>3 hours ago</p>
                                                         </div>
-
-
                                                     </Card.Body>
                                                 </Card>
                                             </Col>

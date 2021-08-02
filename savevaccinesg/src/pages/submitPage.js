@@ -5,14 +5,13 @@ import { Row, Col, Form, Button, Card, Toast, ToastContainer } from 'react-boots
 //IMPORT NAVBAR AND FOOTER
 import MainFooter from '../commons/footer'
 import MainNavbar from '../commons/navbar'
+
 //CONFIG
 import config from "../config";
 const BASE_URL = config.BASE_URL
 
-
 export default function SubmitPage() {
 
-    //Direct calls data, from the form and the account user
     const [name, setName] = useState()
     const [address, setAddress] = useState()
     const [contact, setContact] = useState()
@@ -21,9 +20,11 @@ export default function SubmitPage() {
     const [doseSubmit, setDoseSubmit] = useState(0)
     const [id, setId] = useState()
 
+    //states for TOAST
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
 
+    //using this to pull data via RESTFUL
     const username = localStorage.getItem("params")
 
     useEffect(() => {
@@ -39,12 +40,12 @@ export default function SubmitPage() {
             setArea(response.data.area)
         }
         fetchData1()
-
+        // RANDOM NUMBER GEN for ID placeholder
         const random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
         setId(random)
     }, [])
 
-
+    //SUBMIT TRIGGER + VALIDATION
     const submitDose = async (event) => {
         const form = event.currentTarget
         if (form.checkValidity() === false) {
@@ -62,33 +63,34 @@ export default function SubmitPage() {
                 "region": area
             })
         }
+
+        // TOAST timeout after 3 seconds
         setShowA(true)
-        setTimeout(function(){
+        setTimeout(function () {
             setShowA(false)
             window.location.reload();
-        },3000)
+        }, 3000)
     }
-
-
 
     return (
         <div>
-
-
             <Row>
+                {/* EMPTY COL TO PUSH PAGE TO THE RIGHT */}
                 <Col xs={1}><MainNavbar /></Col>
+                {/* START OF MAIN PAGE SUBMIT */}
                 <Col>
                     <div className="submit-mainface">
                         <Row>
-                            <Col xs={2} ></Col>
-
+                            {/* EMPTY COL TO CENTER PAGE */}
+                            <Col xs={2}></Col>
                             <Col>
                                 {/* TITLE */}
                                 <div className="request-title">
                                     <p>Submit Doses</p>
                                 </div>
+                                {/* START OF SUBMIT BODY */}
                                 <div className="submit-body">
-
+                                    {/* TOAST */}
                                     <ToastContainer position="top-center" className="p-4">
                                         <Toast show={showA} onClose={toggleShowA} clasname="global-toast">
                                             <Toast.Header>
@@ -97,15 +99,16 @@ export default function SubmitPage() {
                                             <Toast.Body>Thank you for submitting!</Toast.Body>
                                         </Toast>
                                     </ToastContainer>
-
-                                    {/* CLINIC DETAILS */}
+                                    {/* MAIN CARDS */}
                                     <Row>
+                                        {/* CONFIRM DETAILS CARD */}
                                         <Col md={9}>
                                             <Card className="CardShadow submit-card">
                                                 <div className="submit-body-confirm-title">
                                                     <p>Confirm Details</p>
                                                 </div>
                                                 <div className="submit-form">
+                                                    {/* DETAILS SHOWN IN DISABLED FORMS */}
                                                     <Form>
                                                         <Form.Group as={Row} className="mb-5">
                                                             <Form.Label column sm={2}>Clinic Name: </Form.Label>
@@ -126,6 +129,7 @@ export default function SubmitPage() {
                                                                 />
                                                             </Col>
                                                         </Form.Group>
+                                                        {/* LAST ROW OF FORM */}
                                                         <Row>
                                                             <Col>
                                                                 <Form.Group as={Row} className="mb-5">
@@ -138,6 +142,7 @@ export default function SubmitPage() {
                                                                     </Col>
                                                                 </Form.Group>
                                                             </Col>
+
                                                             <Col>
                                                                 <Form.Group as={Row} className="mb-5">
                                                                     <Form.Label column sm={2}>Contact: </Form.Label>
@@ -149,12 +154,13 @@ export default function SubmitPage() {
                                                                     </Col>
                                                                 </Form.Group>
                                                             </Col>
+
                                                         </Row>
                                                     </Form>
                                                 </div>
                                             </Card>
                                         </Col>
-
+                                        {/* SUBMIT CLUSTER */}
                                         <Col>
                                             <Card className="submit-submit-card CardShadow">
                                                 <div className="submit-submit">
@@ -163,7 +169,9 @@ export default function SubmitPage() {
                                                     </div>
                                                     <div className="submit-submit-form">
                                                         <Row>
+                                                            {/* EMPTY COL TO CENTER CLUSTER */}
                                                             <Col></Col>
+                                                            {/* CLUSTER COL */}
                                                             <Col xs={6}>
                                                                 <div className="submit-submit-form-amount">
                                                                     <Form onSubmit={submitDose}>
@@ -187,8 +195,8 @@ export default function SubmitPage() {
                                                                         </div>
                                                                     </Form>
                                                                 </div>
-
                                                             </Col>
+                                                            {/* EMPTY COL TO CENTER CLUSTER */}
                                                             <Col></Col>
                                                         </Row>
                                                     </div>
